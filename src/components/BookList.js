@@ -1,17 +1,15 @@
+import { useSelector } from 'react-redux';
 import Book from './Book';
 
 const BookList = () => {
-  const books = [
-    { id: '1', title: 'The Hunger games', author: 'Suzanne Collins' },
-    { id: '2', title: 'Dune', author: 'Frank Herbert' },
-    { id: '3', title: 'Capital in the Twenty-First Century', author: 'Suzanne Collins' },
-  ];
+  const { books } = useSelector((store) => store.books);
+
   return (
     <section>
       <div className="booklist-wrapper">
         <h1>Books Available in Bookstore</h1>
         <ul className="booklist">
-          {books.map((book) => <Book key={book.id} bookInfo={book} />)}
+          {books.map((book) => <Book key={book.item_id} bookInfo={book} />)}
         </ul>
       </div>
       <div className="add-book-wrapper">
