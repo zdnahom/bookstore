@@ -27,10 +27,10 @@ const BookList = () => {
 
   const addNewBook = (e) => {
     e.preventDefault();
-    const id = `item${books.length + 1}`;
+    const id = Math.floor(Math.random() * 100000);
     if (newBookInfo.title.trim() && newBookInfo.author.trim()) {
       dispatch(addBook({
-        item_id: id,
+        item_id: id.toString(),
         title: newBookInfo.title,
         author: newBookInfo.author,
       }));
