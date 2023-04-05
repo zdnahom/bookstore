@@ -2,28 +2,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import axios from 'axios';
 
-const url = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/3bBtDENuMJAbrkmZcLs3/books';
+const url = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/syrygmJTttFvFPBiEgmU/books';
 const initialState = {
-  books: [
-    // {
-    //   item_id: 'item1',
-    //   title: 'The Great Gatsby',
-    //   author: 'John Smith',
-    //   category: 'Fiction',
-    // },
-    // {
-    //   item_id: 'item2',
-    //   title: 'Anna Karenina',
-    //   author: 'Leo Tolstoy',
-    //   category: 'Fiction',
-    // },
-    // {
-    //   item_id: 'item3',
-    //   title: 'The Selfish Gene',
-    //   author: 'Richard Dawkins',
-    //   category: 'Nonfiction',
-    // },
-  ],
+  books: [],
 };
 export const getBooks = createAsyncThunk('books/getBooks', async (_, thunkAPI) => {
   try {
@@ -31,6 +12,14 @@ export const getBooks = createAsyncThunk('books/getBooks', async (_, thunkAPI) =
     return res.data;
   } catch (error) {
     return thunkAPI.rejectWithValue('Something is wrong');
+  }
+});
+export const postBook = createAsyncThunk('books/postBook', async (data) => {
+  try {
+    const res = await axios.post(url, data);
+    return data;
+  } catch (error) {
+    return error;
   }
 });
 const booksSlice = createSlice({
@@ -56,6 +45,10 @@ const booksSlice = createSlice({
           author: booksObj[bookId][0].author,
           category: booksObj[bookId][0].category,
         }));
+        return { ...state, books };
+      })
+      .addCase(postBook.fulfilled, (state, action) => {
+        const books = [...state.books, action.payload];
         return { ...state, books };
       });
   },

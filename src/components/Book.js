@@ -5,7 +5,7 @@ import { removeBook } from '../redux/features/books/booksSlice';
 const Book = ({ bookInfo }) => {
   const dispatch = useDispatch();
   return (
-    <li>
+    <li key={bookInfo.item_id}>
       <div className="book-content">
         <p>{bookInfo.title}</p>
         <span>{bookInfo.author}</span>
