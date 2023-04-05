@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Book from './Book';
-import { addBook } from '../redux/features/books/booksSlice';
+import { addBook, getBooks } from '../redux/features/books/booksSlice';
 
 const BookList = () => {
   const { books } = useSelector((store) => store.books);
@@ -10,6 +10,10 @@ const BookList = () => {
     title: '',
     author: '',
   });
+
+  useEffect(() => {
+    dispatch(getBooks());
+  }, []);
 
   const handleInputs = (e) => {
     if (e.target.name === 'title') {
