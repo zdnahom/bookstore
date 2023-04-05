@@ -10,7 +10,6 @@ const BookList = () => {
   const [newBookInfo, setNewBookInfo] = useState({
     title: '',
     author: '',
-    category: '',
   });
 
   useEffect(() => {
@@ -38,7 +37,7 @@ const BookList = () => {
         item_id: nanoid(),
         title: newBookInfo.title,
         author: newBookInfo.author,
-        category: newBookInfo.category,
+        category: '',
       }));
     }
 
