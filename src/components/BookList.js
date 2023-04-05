@@ -35,6 +35,11 @@ const BookList = () => {
         author: newBookInfo.author,
       }));
     }
+
+    setNewBookInfo({
+      title: '',
+      author: '',
+    });
   };
   return (
     <section>
@@ -47,8 +52,8 @@ const BookList = () => {
       <div className="add-book-wrapper">
         <h2 className="add-book-header">ADD NEW BOOK</h2>
         <form className="add-book">
-          <input name="title" type="text" placeholder="Book title" className="book-title-input" onChange={handleInputs} />
-          <input name="author" type="text" placeholder="Author" className="book-author-input" onChange={handleInputs} />
+          <input name="title" type="text" placeholder="Book title" className="book-title-input" onChange={handleInputs} value={newBookInfo.title} />
+          <input name="author" type="text" placeholder="Author" className="book-author-input" onChange={handleInputs} value={newBookInfo.author} />
           <button type="submit" className="add-book-button" onClick={addNewBook}>Add book</button>
         </form>
       </div>
