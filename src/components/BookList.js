@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {nanoid} from '@reduxjs/toolkit'
+import { nanoid } from '@reduxjs/toolkit';
 import { useState, useEffect } from 'react';
 import Book from './Book';
 import { getBooks, postBook } from '../redux/features/books/booksSlice';
@@ -47,7 +47,7 @@ const BookList = () => {
       author: '',
     });
   };
-  // console.log(books)
+
   return (
     <section>
       <div className="booklist-wrapper">

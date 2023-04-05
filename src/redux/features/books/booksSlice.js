@@ -16,8 +16,16 @@ export const getBooks = createAsyncThunk('books/getBooks', async (_, thunkAPI) =
 });
 export const postBook = createAsyncThunk('books/postBook', async (data) => {
   try {
-    const res = await axios.post(url, data);
+    await axios.post(url, data);
     return data;
+  } catch (error) {
+    return error;
+  }
+});
+export const deleteBook = createAsyncThunk('books/deleteBook', async (id) => {
+  try {
+    await axios.delete(`${url}/${id}`);
+    return id;
   } catch (error) {
     return error;
   }
@@ -50,6 +58,10 @@ const booksSlice = createSlice({
       .addCase(postBook.fulfilled, (state, action) => {
         const books = [...state.books, action.payload];
         return { ...state, books };
+      })
+      .addCase(deleteBook.fulfilled, (state, action) => {
+        const filteredBooks = state.books.filter((book) => book.item_id !== action.payload);
+        return { ...state, books: filteredBooks };
       });
   },
 });
