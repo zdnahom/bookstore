@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { nanoid } from '@reduxjs/toolkit';
+import { useState, useEffect } from 'react';
 import Book from './Book';
-import { addBook } from '../redux/features/books/booksSlice';
+import { getBooks, postBook } from '../redux/features/books/booksSlice';
 
 const BookList = () => {
   const { books } = useSelector((store) => store.books);
@@ -10,6 +11,10 @@ const BookList = () => {
     title: '',
     author: '',
   });
+
+  useEffect(() => {
+    dispatch(getBooks());
+  }, []);
 
   const handleInputs = (e) => {
     if (e.target.name === 'title') {
@@ -27,12 +32,12 @@ const BookList = () => {
 
   const addNewBook = (e) => {
     e.preventDefault();
-    const id = Math.floor(Math.random() * 100000);
     if (newBookInfo.title.trim() && newBookInfo.author.trim()) {
-      dispatch(addBook({
-        item_id: id.toString(),
+      dispatch(postBook({
+        item_id: nanoid(),
         title: newBookInfo.title,
         author: newBookInfo.author,
+        category: '',
       }));
     }
 
@@ -41,6 +46,7 @@ const BookList = () => {
       author: '',
     });
   };
+
   return (
     <section>
       <div className="booklist-wrapper">
