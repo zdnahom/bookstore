@@ -48,9 +48,8 @@ const BookList = () => {
   };
 
   return (
-    <section>
+    <section className="booklist-container">
       <div className="booklist-wrapper">
-        <h1>Books Available in Bookstore</h1>
         <ul className="booklist">
           {books.map((book) => <Book key={book.item_id} bookInfo={book} />)}
         </ul>

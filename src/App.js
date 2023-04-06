@@ -7,8 +7,8 @@ import Navigation from './components/Navigation';
 function App() {
   return (
     <BrowserRouter>
-      <Navigation />
       <main className="App">
+        <Navigation />
         <Routes>
           <Route path="/" element={<BookList />} />
           <Route path="/categories" element={<Categories />} />
