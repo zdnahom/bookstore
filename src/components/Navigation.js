@@ -1,13 +1,18 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Navigation = () => (
   <header className="header">
-    <Link to="/" className="logo">BOOKSTORE CMS</Link>
     <nav className="nav">
       <ul className="navbar">
-        <li><Link to="/" className="nav-link">BOOKS</Link></li>
-        <li><Link to="/categories" className="nav-link">CATEGORIES</Link></li>
+        <NavLink to="/" className="logo">BOOKSTORE CMS</NavLink>
+        <li><NavLink to="/" className={({ isActive }) => (isActive ? 'active-link' : 'nav-link')}>BOOKS</NavLink></li>
+        <li><NavLink to="/categories" className={({ isActive }) => (isActive ? 'active-link' : 'nav-link')}>CATEGORIES</NavLink></li>
       </ul>
+      <div className="oval">
+        <FontAwesomeIcon icon={faUser} className="profile" />
+      </div>
     </nav>
   </header>
 );

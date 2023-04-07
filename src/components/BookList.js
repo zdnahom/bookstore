@@ -48,21 +48,25 @@ const BookList = () => {
   };
 
   return (
-    <section>
+    <section className="booklist-container">
+
       <div className="booklist-wrapper">
-        <h1>Books Available in Bookstore</h1>
         <ul className="booklist">
           {books.map((book) => <Book key={book.item_id} bookInfo={book} />)}
         </ul>
       </div>
+
+      <div className="horizontal-divider" />
+
       <div className="add-book-wrapper">
         <h2 className="add-book-header">ADD NEW BOOK</h2>
         <form className="add-book">
           <input name="title" type="text" placeholder="Book title" className="book-title-input" onChange={handleInputs} value={newBookInfo.title} />
           <input name="author" type="text" placeholder="Author" className="book-author-input" onChange={handleInputs} value={newBookInfo.author} />
-          <button type="submit" className="add-book-button" onClick={addNewBook}>Add book</button>
+          <button type="submit" className="add-book-button" onClick={addNewBook}>ADD BOOK</button>
         </form>
       </div>
+
     </section>
   );
 };

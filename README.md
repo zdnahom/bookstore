@@ -46,6 +46,8 @@
 
 - **Display Available books**
 - **Navigation from one page to another**
+- **Add new book to the book store**
+- **Remove book from the book store**
 
 
 
@@ -108,8 +110,7 @@ No test module for now.But it will be added in the near future.
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
--  **Add styling**
--  **Add new book feature**
+-  **Cool animations**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
